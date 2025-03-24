@@ -1,0 +1,12 @@
+workflows:
+  flutter-build-and-deploy:
+    name: Flutter Build and Deploy
+    environment:
+      flutter: stable
+    scripts:
+      - flutter pub get
+      - flutter build appbundle --release # For Android
+      - flutter build ios --release # For iOS
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+      - build/ios/ipa/*.ipa
