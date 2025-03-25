@@ -10,3 +10,5 @@ workflows:
     artifacts:
       - build/app/outputs/bundle/release/*.aab
       - build/ios/ipa/*.ipa
+groups:
+    - module_credentials
