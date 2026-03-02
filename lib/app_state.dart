@@ -211,6 +211,48 @@ class FFAppState extends ChangeNotifier {
   set SchemeId(String value) {
     _SchemeId = value;
   }
+
+  String _LoanDate = '';
+  String get LoanDate => _LoanDate;
+  set LoanDate(String value) {
+    _LoanDate = value;
+  }
+
+  String _EndDate = '';
+  String get EndDate => _EndDate;
+  set EndDate(String value) {
+    _EndDate = value;
+  }
+
+  String _InstallmentAmt = '';
+  String get InstallmentAmt => _InstallmentAmt;
+  set InstallmentAmt(String value) {
+    _InstallmentAmt = value;
+  }
+
+  String _CustEName = '';
+  String get CustEName => _CustEName;
+  set CustEName(String value) {
+    _CustEName = value;
+  }
+
+  String _CustMName = '';
+  String get CustMName => _CustMName;
+  set CustMName(String value) {
+    _CustMName = value;
+  }
+
+  String _CustId = '';
+  String get CustId => _CustId;
+  set CustId(String value) {
+    _CustId = value;
+  }
+
+  String _CustMobNo = '';
+  String get CustMobNo => _CustMobNo;
+  set CustMobNo(String value) {
+    _CustMobNo = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

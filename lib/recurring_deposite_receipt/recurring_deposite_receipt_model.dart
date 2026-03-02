@@ -7,6 +7,14 @@ import 'package:flutter/material.dart';
 
 class RecurringDepositeReceiptModel
     extends FlutterFlowModel<RecurringDepositeReceiptWidget> {
+  ///  Local state fields for this page.
+
+  bool isBtnPressed = false;
+
+  bool isSchemeDisabled = false;
+
+  bool isAcIdDisabled = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -15,15 +23,6 @@ class RecurringDepositeReceiptModel
   TextEditingController? textFieldRecieptNoTextController;
   String? Function(BuildContext, String?)?
       textFieldRecieptNoTextControllerValidator;
-  String? _textFieldRecieptNoTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return ' Reciept Number is required';
-    }
-
-    return null;
-  }
-
   // State field(s) for TextFieldDate widget.
   FocusNode? textFieldDateFocusNode;
   TextEditingController? textFieldDateTextController;
@@ -31,7 +30,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldDateTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'RD Recipet Date is required';
+      return FFLocalizations.of(context).getText(
+        'tb1a5epp' /* RD Recipet Date is required */,
+      );
     }
 
     return null;
@@ -45,7 +46,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldSchemeIdTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'SchemeId is required';
+      return FFLocalizations.of(context).getText(
+        'nii8y7rf' /* SchemeId is required */,
+      );
     }
 
     return null;
@@ -58,7 +61,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldAcNoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'AcNo is required';
+      return FFLocalizations.of(context).getText(
+        'zsj4zwzy' /* AcNo is required */,
+      );
     }
 
     return null;
@@ -73,7 +78,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'custName is required';
+      return FFLocalizations.of(context).getText(
+        'i0h8znwm' /* custName is required */,
+      );
     }
 
     return null;
@@ -87,7 +94,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldRDDateTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'DepositDate is required';
+      return FFLocalizations.of(context).getText(
+        '88qr4e4x' /* DepositDate is required */,
+      );
     }
 
     return null;
@@ -101,7 +110,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldMaturityDateTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'MaturityDate is required';
+      return FFLocalizations.of(context).getText(
+        'h6i9oxm7' /* MaturityDate is required */,
+      );
     }
 
     return null;
@@ -115,7 +126,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldCurrBalTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'balance is required';
+      return FFLocalizations.of(context).getText(
+        'sixero91' /* balance is required */,
+      );
     }
 
     return null;
@@ -129,7 +142,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldDepositamtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'DepositAmount is required';
+      return FFLocalizations.of(context).getText(
+        's9aooceq' /* DepositAmount is required */,
+      );
     }
 
     return null;
@@ -143,7 +158,9 @@ class RecurringDepositeReceiptModel
   String? _textFieldCollAmtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Enter Collection Amount is required';
+      return FFLocalizations.of(context).getText(
+        'stbmhuw4' /* Enter Collection Amount is req... */,
+      );
     }
 
     return null;
@@ -154,8 +171,6 @@ class RecurringDepositeReceiptModel
 
   @override
   void initState(BuildContext context) {
-    textFieldRecieptNoTextControllerValidator =
-        _textFieldRecieptNoTextControllerValidator;
     textFieldDateTextControllerValidator =
         _textFieldDateTextControllerValidator;
     textFieldSchemeIdTextControllerValidator =

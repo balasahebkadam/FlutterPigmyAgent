@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'r_d_member_list_page_widget.dart' show RDMemberListPageWidget;
+import 'splash_schreen_widget.dart' show SplashSchreenWidget;
 import 'package:flutter/material.dart';
 
-class RDMemberListPageModel extends FlutterFlowModel<RDMemberListPageWidget> {
+class SplashSchreenModel extends FlutterFlowModel<SplashSchreenWidget> {
   @override
   void initState(BuildContext context) {}
 

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -33,12 +34,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => HomePageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: FlutterFlowTheme.of(context).alternate,
+                child: Image.asset(
+                  'assets/images/Screenshot_20250329_003252.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            )
+          : HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => HomePageWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: FlutterFlowTheme.of(context).alternate,
+                    child: Image.asset(
+                      'assets/images/Screenshot_20250329_003252.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                )
+              : HomePageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
@@ -49,11 +70,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: RegisterWidget.routeName,
           path: RegisterWidget.routePath,
           builder: (context, params) => RegisterWidget(),
-        ),
-        FFRoute(
-          name: RecieptWidget.routeName,
-          path: RecieptWidget.routePath,
-          builder: (context, params) => RecieptWidget(),
         ),
         FFRoute(
           name: DashboardPageWidget.routeName,
@@ -117,17 +133,100 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: RecurringDepositeReceiptWidget.routeName,
           path: RecurringDepositeReceiptWidget.routePath,
-          builder: (context, params) => RecurringDepositeReceiptWidget(),
+          builder: (context, params) => RecurringDepositeReceiptWidget(
+            schemeId: params.getParam(
+              'schemeId',
+              ParamType.String,
+            ),
+            acNo: params.getParam(
+              'acNo',
+              ParamType.String,
+            ),
+            custName: params.getParam(
+              'custName',
+              ParamType.String,
+            ),
+            depositDate: params.getParam(
+              'depositDate',
+              ParamType.String,
+            ),
+            maturityDate: params.getParam(
+              'maturityDate',
+              ParamType.String,
+            ),
+            balance: params.getParam(
+              'balance',
+              ParamType.String,
+            ),
+            depositAmount: params.getParam(
+              'depositAmount',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
-          name: NewRieciptPageWidget.routeName,
-          path: NewRieciptPageWidget.routePath,
-          builder: (context, params) => NewRieciptPageWidget(),
+          name: NewAccountPageWidget.routeName,
+          path: NewAccountPageWidget.routePath,
+          builder: (context, params) => NewAccountPageWidget(),
         ),
         FFRoute(
-          name: RDMemberListPageWidget.routeName,
-          path: RDMemberListPageWidget.routePath,
-          builder: (context, params) => RDMemberListPageWidget(
+          name: LoanCollectionRecieptWidget.routeName,
+          path: LoanCollectionRecieptWidget.routePath,
+          builder: (context, params) => LoanCollectionRecieptWidget(
+            schemeId: params.getParam(
+              'schemeId',
+              ParamType.String,
+            ),
+            acNo: params.getParam(
+              'acNo',
+              ParamType.String,
+            ),
+            custName: params.getParam(
+              'custName',
+              ParamType.String,
+            ),
+            loanDate: params.getParam(
+              'loanDate',
+              ParamType.String,
+            ),
+            endDate: params.getParam(
+              'endDate',
+              ParamType.String,
+            ),
+            balance: params.getParam(
+              'balance',
+              ParamType.String,
+            ),
+            installmentAmt: params.getParam(
+              'installmentAmt',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: GetCustomerListWidget.routeName,
+          path: GetCustomerListWidget.routePath,
+          builder: (context, params) => GetCustomerListWidget(),
+        ),
+        FFRoute(
+          name: SplashSchreenWidget.routeName,
+          path: SplashSchreenWidget.routePath,
+          builder: (context, params) => SplashSchreenWidget(),
+        ),
+        FFRoute(
+          name: NewLoanMemberListPageWidget.routeName,
+          path: NewLoanMemberListPageWidget.routePath,
+          builder: (context, params) => NewLoanMemberListPageWidget(
+            schemeId: params.getParam(
+              'schemeId',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: RDMemberListWidget.routeName,
+          path: RDMemberListWidget.routePath,
+          builder: (context, params) => RDMemberListWidget(
             schemeId: params.getParam(
               'schemeId',
               ParamType.String,
@@ -260,6 +359,7 @@ class FFRoute {
           return transitionInfo.hasTransition
               ? CustomTransitionPage(
                   key: state.pageKey,
+                  name: state.name,
                   child: child,
                   transitionDuration: transitionInfo.duration,
                   transitionsBuilder:
@@ -277,7 +377,8 @@ class FFRoute {
                     child,
                   ),
                 )
-              : MaterialPage(key: state.pageKey, child: child);
+              : MaterialPage(
+                  key: state.pageKey, name: state.name, child: child);
         },
         routes: routes,
       );

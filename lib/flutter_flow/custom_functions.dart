@@ -52,3 +52,17 @@ String? optionFunction(String? str) {
     return 'P';
   }
 }
+
+String? totalAcNoFunction(
+  int? acNo,
+  int? rDAcNo,
+  int? loanAcNo,
+) {
+  // write code to perform addition of three number
+  if (acNo == null || rDAcNo == null || loanAcNo == null) {
+    return null;
+  }
+
+  int total = acNo + rDAcNo + loanAcNo;
+  return total.toString();
+}

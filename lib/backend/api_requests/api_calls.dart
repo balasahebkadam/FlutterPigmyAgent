@@ -855,6 +855,392 @@ class RDReceiptCall {
       ));
 }
 
+class LoanMemberListCall {
+  static Future<ApiCallResponse> call({
+    String? serverAddress = '',
+    String? iPName = '',
+    String? mobileNo = '',
+    String? agentID = '',
+    String? token = '',
+    String? schemeId = '',
+    String? acno = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LoanMemberList',
+      apiUrl: 'https://${serverAddress}/${iPName}/Service.asmx/LoanMemberList',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'UID': "0xCB98A10429C5DABEB1A2B491A1A90B0A",
+        'PWD': "0xB439FA6DBE18C1963A9B32258E561614",
+        'IMEINo': "da7651a7d2ae5ee7",
+        'MobileNo': mobileNo,
+        'AgentID': agentID,
+        'Token': token,
+        'SchemeId': schemeId,
+        'Acno': acno,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? loanMemberList(dynamic response) => getJsonField(
+        response,
+        r'''$.LoanMemberList''',
+        true,
+      ) as List?;
+  static List<int>? flag(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].Flag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? msg(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].Msg''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? acNo(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].AcNo''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? customerName(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].CustomerName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? loanDate(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].LoanDate''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? endDate(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].EndDate''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? installmentAmt(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].InstallmentAmt''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? balance(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].Balance''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? acStatus(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].AcStatus''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? shadowBalance(dynamic response) => (getJsonField(
+        response,
+        r'''$.LoanMemberList[:].ShadowBalance''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+}
+
+class LoanReceiptCall {
+  static Future<ApiCallResponse> call({
+    String? serverAddress = '',
+    String? iPName = '',
+    String? mobileNo = '',
+    String? agentID = '',
+    String? token = '',
+    String? schemeId = '',
+    String? acNo = '',
+    String? trnAmt = '',
+    String? trnDate = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LoanReceipt',
+      apiUrl: 'https://${serverAddress}/${iPName}/Service.asmx/LoanReceipt',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'UID': "0xCB98A10429C5DABEB1A2B491A1A90B0A",
+        'PWD': "0xB439FA6DBE18C1963A9B32258E561614",
+        'IMEINo': "da7651a7d2ae5ee7",
+        'MobileNo': mobileNo,
+        'AgentID': agentID,
+        'Token': token,
+        'SchemeId': schemeId,
+        'AcNo': acNo,
+        'TrnDate': trnDate,
+        'TrnAmt': trnAmt,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? loanReciept(dynamic response) => getJsonField(
+        response,
+        r'''$.LoanReceipt''',
+        true,
+      ) as List?;
+  static int? flag(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.LoanReceipt[:].Flag''',
+      ));
+  static String? msg(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.LoanReceipt[:].Msg''',
+      ));
+  static int? trnNo(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.LoanReceipt[:].TrnNo''',
+      ));
+}
+
+class GetCustomerCall {
+  static Future<ApiCallResponse> call({
+    String? serverAddress = '',
+    String? iPName = '',
+    String? mobileNo = '',
+    String? agentID = '',
+    String? token = '',
+    String? customerId = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetCustomer',
+      apiUrl: 'https://${serverAddress}/${iPName}/Service.asmx/GetCustomer',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'UID': "0xCB98A10429C5DABEB1A2B491A1A90B0A",
+        'PWD': "0xB439FA6DBE18C1963A9B32258E561614",
+        'IMEINo': "da7651a7d2ae5ee7",
+        'MobileNo': mobileNo,
+        'AgentID': agentID,
+        'Token': token,
+        'CustomerId': customerId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? getCustomer(dynamic response) => getJsonField(
+        response,
+        r'''$.GetCustomer''',
+        true,
+      ) as List?;
+  static List<int>? flag(dynamic response) => (getJsonField(
+        response,
+        r'''$.GetCustomer[:].Flag''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? msg(dynamic response) => (getJsonField(
+        response,
+        r'''$.GetCustomer[:].Msg''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? customerEName(dynamic response) => (getJsonField(
+        response,
+        r'''$.GetCustomer[:].CustomerEName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<String>? customerMName(dynamic response) => (getJsonField(
+        response,
+        r'''$.GetCustomer[:].CustomerMName''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? mobile(dynamic response) => (getJsonField(
+        response,
+        r'''$.GetCustomer[:].Mobile''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+  static List<int>? customerID(dynamic response) => (getJsonField(
+        response,
+        r'''$.GetCustomer[:].CustomerID''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
+}
+
+class NewMemberCall {
+  static Future<ApiCallResponse> call({
+    String? serverAddress = '',
+    String? iPName = '',
+    String? mobileNo = '',
+    String? agentID = '',
+    String? token = '',
+    String? customerId = '',
+    String? memberName = '',
+    String? collectionAmt = '',
+    String? memMobileNo = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'NewMember',
+      apiUrl: 'https://${serverAddress}/${iPName}/Service.asmx/NewMember',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'UID': "0xCB98A10429C5DABEB1A2B491A1A90B0A",
+        'PWD': "0xB439FA6DBE18C1963A9B32258E561614",
+        'IMEINo': "da7651a7d2ae5ee7",
+        'MobileNo': mobileNo,
+        'AgentID': agentID,
+        'Token': token,
+        'CustomerId': customerId,
+        'MemberName': memberName,
+        'CollectionAmt': collectionAmt,
+        'MemMobileNo': memMobileNo,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? newMember(dynamic response) => getJsonField(
+        response,
+        r'''$.NewMember''',
+        true,
+      ) as List?;
+  static int? flag(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.NewMember[:].Flag''',
+      ));
+  static String? msg(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.NewMember[:].Msg''',
+      ));
+  static int? acNo(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.NewMember[:].AcNo''',
+      ));
+}
+
+class AppBlockCall {
+  static Future<ApiCallResponse> call({
+    String? serverAddress = '',
+    String? iPName = '',
+    String? mobileNo = '',
+    String? agentID = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'AppBlock',
+      apiUrl: 'https://${serverAddress}/${iPName}/Service.asmx/AppBlock',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {
+        'UID': "0xCB98A10429C5DABEB1A2B491A1A90B0A",
+        'PWD': "0xB439FA6DBE18C1963A9B32258E561614",
+        'IMEINo': "da7651a7d2ae5ee7",
+        'MobileNo': mobileNo,
+        'AgentID': agentID,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? appBlock(dynamic response) => getJsonField(
+        response,
+        r'''$.Setting''',
+        true,
+      ) as List?;
+  static int? flag(dynamic response) => castToType<int>(getJsonField(
+        response,
+        r'''$.Setting[:].Flag''',
+      ));
+  static String? msg(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.Setting[:].Msg''',
+      ));
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

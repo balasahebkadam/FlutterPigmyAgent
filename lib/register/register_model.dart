@@ -15,11 +15,20 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? _mobileNumberTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' 10-digit Mobile Number is required';
+      return FFLocalizations.of(context).getText(
+        '8k14wnbt' /*  10-digit Mobile Number is req... */,
+      );
     }
 
+    if (val.length < 10) {
+      return FFLocalizations.of(context).getText(
+        '96beqdrl' /* Enter Valid 10 digit Mobile Nu... */,
+      );
+    }
     if (val.length > 10) {
-      return 'Maximum 10 characters allowed, currently ${val.length}.';
+      return FFLocalizations.of(context).getText(
+        's5ybc4az' /* Enter Valid 10 digit Mobile Nu... */,
+      );
     }
 
     return null;
@@ -31,11 +40,15 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? Function(BuildContext, String?)? branchIdTextControllerValidator;
   String? _branchIdTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' Branch Id / Number is required';
+      return FFLocalizations.of(context).getText(
+        'hsq9nr9j' /*  Branch Id / Number is require... */,
+      );
     }
 
-    if (val.length > 4) {
-      return 'Maximum 4 characters allowed, currently ${val.length}.';
+    if (val.length > 3) {
+      return FFLocalizations.of(context).getText(
+        'mn2yv1lb' /* Enter Valid Branch ID */,
+      );
     }
 
     return null;
@@ -47,11 +60,15 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? Function(BuildContext, String?)? agentIdTextControllerValidator;
   String? _agentIdTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' Agent Id / Number is required';
+      return FFLocalizations.of(context).getText(
+        'ytrtu48q' /*  Agent Id / Number is required */,
+      );
     }
 
     if (val.length > 4) {
-      return 'Maximum 4 characters allowed, currently ${val.length}.';
+      return FFLocalizations.of(context).getText(
+        '5kcm1o2r' /* Enter Valid Agent ID */,
+      );
     }
 
     return null;
@@ -64,7 +81,18 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? Function(BuildContext, String?)? pinTextControllerValidator;
   String? _pinTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' 4-digit PIN is required';
+      return FFLocalizations.of(context).getText(
+        'b8ay92kn' /*  4-digit PIN is required */,
+      );
+    }
+
+    if (val.length < 4) {
+      return 'Requires at least 4 characters.';
+    }
+    if (val.length > 4) {
+      return FFLocalizations.of(context).getText(
+        'ywyjox8e' /* Pin  can't be more than 4 digi... */,
+      );
     }
 
     return null;
@@ -77,7 +105,9 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? _serverAddressTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' Server Address / Name is required';
+      return FFLocalizations.of(context).getText(
+        'zsgcvmka' /*  Server Address / Name is requ... */,
+      );
     }
 
     if (!RegExp(kTextValidatorWebsiteRegex).hasMatch(val)) {
@@ -93,11 +123,20 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? _securityCodeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Security Code is required';
+      return FFLocalizations.of(context).getText(
+        'p9v8639z' /* Security Code is required */,
+      );
     }
 
+    if (val.length < 6) {
+      return FFLocalizations.of(context).getText(
+        'nwl5ubx4' /* Enter  6 digit Security code */,
+      );
+    }
     if (val.length > 6) {
-      return 'Maximum 6 characters allowed, currently ${val.length}.';
+      return FFLocalizations.of(context).getText(
+        '2zqlpoek' /* Enter  6 digit Security code */,
+      );
     }
 
     return null;
@@ -109,7 +148,9 @@ class RegisterModel extends FlutterFlowModel<RegisterWidget> {
   String? Function(BuildContext, String?)? iPNameTextControllerValidator;
   String? _iPNameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' IP Name is required';
+      return FFLocalizations.of(context).getText(
+        'hy7p99ru' /*  IP Name is required */,
+      );
     }
 
     return null;

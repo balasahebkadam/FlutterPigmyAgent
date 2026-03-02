@@ -9,6 +9,8 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
 
   bool isBtnPressed = false;
 
+  bool acNoDisable = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -17,19 +19,10 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   TextEditingController? textFieldReciptNoTextController;
   String? Function(BuildContext, String?)?
       textFieldReciptNoTextControllerValidator;
-  // State field(s) for TextFieldDave widget.
-  FocusNode? textFieldDaveFocusNode;
-  TextEditingController? textFieldDaveTextController;
-  String? Function(BuildContext, String?)? textFieldDaveTextControllerValidator;
-  String? _textFieldDaveTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'AppCurrWorkingDate is required';
-    }
-
-    return null;
-  }
-
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for TextFieldAcNo widget.
   FocusNode? textFieldAcNoFocusNode;
   TextEditingController? textFieldAcNoTextController;
@@ -37,7 +30,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldAcNoTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'A/c No is required';
+      return FFLocalizations.of(context).getText(
+        'g8s5spaf' /* A/c No is required */,
+      );
     }
 
     return null;
@@ -52,7 +47,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldNameTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Customer Name is required';
+      return FFLocalizations.of(context).getText(
+        'ianw83th' /* Customer Name is required */,
+      );
     }
 
     return null;
@@ -66,7 +63,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldAcBalanceTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Balance is required';
+      return FFLocalizations.of(context).getText(
+        '5swkq9wa' /* Balance is required */,
+      );
     }
 
     return null;
@@ -80,7 +79,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldShadowBalTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'ShadowBalance is required';
+      return FFLocalizations.of(context).getText(
+        'yy9n476h' /* ShadowBalance is required */,
+      );
     }
 
     return null;
@@ -94,7 +95,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldOpenDateTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Open Date is required';
+      return FFLocalizations.of(context).getText(
+        'la5dxic6' /* Open Date is required */,
+      );
     }
 
     return null;
@@ -108,7 +111,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldLastDrDateTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Last Dr Date is required';
+      return FFLocalizations.of(context).getText(
+        'tqt5gssl' /* Last Dr Date is required */,
+      );
     }
 
     return null;
@@ -122,7 +127,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldAccountAgeTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'A/c Age is required';
+      return FFLocalizations.of(context).getText(
+        '8awbo4vt' /* A/c Age is required */,
+      );
     }
 
     return null;
@@ -136,7 +143,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldRemarkTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' Remark is rquired';
+      return FFLocalizations.of(context).getText(
+        'e5qmxdin' /*  Remark is rquired */,
+      );
     }
 
     return null;
@@ -150,7 +159,9 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
   String? _textFieldCollAmtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return ' Collection Amount is required';
+      return FFLocalizations.of(context).getText(
+        '3gscwmyf' /*  Collection Amount is required */,
+      );
     }
 
     return null;
@@ -161,8 +172,6 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
 
   @override
   void initState(BuildContext context) {
-    textFieldDaveTextControllerValidator =
-        _textFieldDaveTextControllerValidator;
     textFieldAcNoTextControllerValidator =
         _textFieldAcNoTextControllerValidator;
     textFieldNameTextControllerValidator =
@@ -188,8 +197,8 @@ class CollectionRecieptModel extends FlutterFlowModel<CollectionRecieptWidget> {
     textFieldReciptNoFocusNode?.dispose();
     textFieldReciptNoTextController?.dispose();
 
-    textFieldDaveFocusNode?.dispose();
-    textFieldDaveTextController?.dispose();
+    textFieldFocusNode?.dispose();
+    textController2?.dispose();
 
     textFieldAcNoFocusNode?.dispose();
     textFieldAcNoTextController?.dispose();

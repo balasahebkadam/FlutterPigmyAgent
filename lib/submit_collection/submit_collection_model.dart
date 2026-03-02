@@ -4,13 +4,18 @@ import 'submit_collection_widget.dart' show SubmitCollectionWidget;
 import 'package:flutter/material.dart';
 
 class SubmitCollectionModel extends FlutterFlowModel<SubmitCollectionWidget> {
+  ///  Local state fields for this page.
+
+  bool btnSubmit = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for BatchNo widget.
-  FocusNode? batchNoFocusNode;
-  TextEditingController? batchNoTextController;
-  String? Function(BuildContext, String?)? batchNoTextControllerValidator;
+  // State field(s) for TextFiledBatchNo widget.
+  FocusNode? textFiledBatchNoFocusNode;
+  TextEditingController? textFiledBatchNoTextController;
+  String? Function(BuildContext, String?)?
+      textFiledBatchNoTextControllerValidator;
   // State field(s) for BrWorkingDate widget.
   FocusNode? brWorkingDateFocusNode;
   TextEditingController? brWorkingDateTextController;
@@ -54,7 +59,7 @@ class SubmitCollectionModel extends FlutterFlowModel<SubmitCollectionWidget> {
   FocusNode? rDCollAmtFocusNode;
   TextEditingController? rDCollAmtTextController;
   String? Function(BuildContext, String?)? rDCollAmtTextControllerValidator;
-  // Stores action output result for [Backend Call - API (SubmitCollection)] action in Button widget.
+  // Stores action output result for [Backend Call - API (SubmitCollection)] action in Buttonsubmit widget.
   ApiCallResponse? submitCollSubmit;
 
   @override
@@ -62,8 +67,8 @@ class SubmitCollectionModel extends FlutterFlowModel<SubmitCollectionWidget> {
 
   @override
   void dispose() {
-    batchNoFocusNode?.dispose();
-    batchNoTextController?.dispose();
+    textFiledBatchNoFocusNode?.dispose();
+    textFiledBatchNoTextController?.dispose();
 
     brWorkingDateFocusNode?.dispose();
     brWorkingDateTextController?.dispose();

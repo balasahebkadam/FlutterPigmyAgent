@@ -4,17 +4,17 @@ import 'close_collection_widget.dart' show CloseCollectionWidget;
 import 'package:flutter/material.dart';
 
 class CloseCollectionModel extends FlutterFlowModel<CloseCollectionWidget> {
+  ///  Local state fields for this page.
+
+  bool btnSubmit = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
   // State field(s) for AppDate widget.
-  FocusNode? appDateFocusNode1;
-  TextEditingController? appDateTextController1;
-  String? Function(BuildContext, String?)? appDateTextController1Validator;
-  // State field(s) for AppDate widget.
-  FocusNode? appDateFocusNode2;
-  TextEditingController? appDateTextController2;
-  String? Function(BuildContext, String?)? appDateTextController2Validator;
+  FocusNode? appDateFocusNode;
+  TextEditingController? appDateTextController;
+  String? Function(BuildContext, String?)? appDateTextControllerValidator;
   // State field(s) for PigmyTotalRecipt widget.
   FocusNode? pigmyTotalReciptFocusNode;
   TextEditingController? pigmyTotalReciptTextController;
@@ -41,7 +41,7 @@ class CloseCollectionModel extends FlutterFlowModel<CloseCollectionWidget> {
   FocusNode? rDCollAmtFocusNode;
   TextEditingController? rDCollAmtTextController;
   String? Function(BuildContext, String?)? rDCollAmtTextControllerValidator;
-  // Stores action output result for [Backend Call - API (CloseCollection)] action in Button widget.
+  // Stores action output result for [Backend Call - API (CloseCollection)] action in ButtonSubmit widget.
   ApiCallResponse? closeCollSubmit;
 
   @override
@@ -49,11 +49,8 @@ class CloseCollectionModel extends FlutterFlowModel<CloseCollectionWidget> {
 
   @override
   void dispose() {
-    appDateFocusNode1?.dispose();
-    appDateTextController1?.dispose();
-
-    appDateFocusNode2?.dispose();
-    appDateTextController2?.dispose();
+    appDateFocusNode?.dispose();
+    appDateTextController?.dispose();
 
     pigmyTotalReciptFocusNode?.dispose();
     pigmyTotalReciptTextController?.dispose();
